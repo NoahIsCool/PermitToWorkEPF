@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>CSS Website Layout</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="admin.css" />
+import React from 'react';
+import logo from './logo.svg';
+import './Admin.css';
 
-</head>
-<body>
+function Admin() {
+  return (
+    <div className="Admin">
+      <header className="Admin-header">
+
 
     <div class="topnav">
         <a href="#">Check In</a>
         <a href="#">Calendar</a>
         <a href="#">Admin</a>
-        <a href="#" style="float:right">Log in</a>
+        <a href="#" style={{float:'right'}}>Log in</a>
     </div>
 
 
@@ -49,5 +48,9 @@
     </div>
 
 
-</body>
-</html>
+              </header>
+    </div>
+  );
+}
+
+export default Admin;
