@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="admin.css">
+    <title></title>
+</head>
+<body>
+    <div class="topnav">
+        <a href="index.html">Check In</a>
+        <a href="#">Calendar</a>
+        <a href="admin.html">Admin</a>
+        <a href="#" style="float:right">Log in</a>
+    </div>
+
+    <div id="machines">
+        <div class="row">
+            <div class="column" style="text-align: right;">
+                <p style="padding-right: 10px; padding-top:4%;">
+                    Machines
+                </p>
+            </div>
+            <div class="column">
+                <div style="padding-top: 4%;">
+                    <div>
+                        <form>
+                            Student ID:
+                            <input type="text" name="student ID" /> <br />
+                            <div class="ckbox"style="border: solid;">
+                                <input type="checkbox" name="lathe 1" /> Lathe 1 <br />
+                                <input type="checkbox" name="lathe 2" /> Lathe 2<br />
+                                <input type="checkbox" name="mill 1" /> Mill 1<br />
+                                <input type="checkbox" name="mill 2" /> Mill 2<br />
+                                <input type="checkbox" name="cnc plasma" disabled /> <s>CNC Plasma</s> (Checked Out: Tommy Mai 1/15/2020 2:00pm) <br />
+                                <input type="checkbox" name="welder" /> Welders<br />
+                            </div>
+                            <input type="button" name="checkIn" value="Check In" />
+                            <input type="button" name="checkOut" value="Check Out" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
