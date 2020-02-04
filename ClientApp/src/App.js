@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Admin } from './components/Admin';
+import { Calendar } from './components/Calendar';
+import { CheckIn } from './components/CheckIn';
 import ApiAuthorizationRoutes from './components/api-authorization/ApiAuthorizationRoutes';
 import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
 
@@ -13,8 +15,10 @@ export default class App extends Component {
   render () {
     return (
       <Layout>
-        <Route exact path='/' component={Admin} />
+        <Route path='/Admin' component={Admin} />
         <Route path={ApplicationPaths.ApiAuthorizationPrefix} component={ApiAuthorizationRoutes} />
+	      <Route path='/Calendar' component={Calendar}/>
+	      <Route exact path='/' component={CheckIn}/>
       </Layout>
     );
   }
