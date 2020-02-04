@@ -4,14 +4,6 @@ export class Admin extends Component {
 	render () {
 		return (
 		<div className="Admin">
-			<header className="Admin-header">
-
-				<div class="topnav">
-					<a href="#">Check In</a>
-					<a href="#">Calendar</a>
-					<a href="#">Admin</a>
-					<a href="#" style={{float:'right'}}>Log in</a>
-				</div> 
 
 				<div class="row">
 					<div class="column">
@@ -43,7 +35,6 @@ export class Admin extends Component {
 				<div class="footer">
 					<p>Footer</p>
 				</div> 
-			</header>
 		</div>
 	);}
 }
