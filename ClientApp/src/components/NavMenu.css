@@ -23,20 +23,23 @@ html {
     background-color: var(--ou-crimson);
 }
 
-    /* Style the topnav links */
-    .topnav a {
-        float: left;
-        display: block;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 2%;
-        text-decoration: none;
-    }
+li {
+	float:left;
+}
+/* Style the topnav links */
+.topnav a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 2%;
+	text-decoration: none;
+}
 
-    /* Change color on hover */
-    .topnav a:hover {
-        background-color: #ddd;
-        color: black;
-    }
+/* Change color on hover */
+.topnav a:hover {
+	background-color: #ddd;
+	color: black;
+}
 
 
