@@ -30,6 +30,7 @@ export class NavMenu extends Component {
       <a href="/Admin">Admin</a>
       <a href="/login">login</a>
     </div>
+
     );
   }
 }
