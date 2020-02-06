@@ -1,10 +1,11 @@
 import React from 'react'
-import { Calendar, Views } from 'react-calendar/src'
-import { events, ExampleControlSlot } from 'react-calendar/examples'
+import { Calendar, Views } from 'react-big-calendar'
+import events from '../events'
+import ExampleControlSlot from '../ExampleControlSlot'
 
 const propTypes = {}
 
-class ReactCalendar extends React.Component {
+class Selectable extends React.Component {
   constructor(...args) {
     super(...args)
 
