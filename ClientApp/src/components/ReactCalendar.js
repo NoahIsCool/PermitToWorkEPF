@@ -51,6 +51,6 @@ class ReactCalendar extends React.Component {
   }
 }
 
-Selectable.propTypes = propTypes
+ReactCalendar.propTypes = propTypes
 
-export default Selectable
+export default ReactCalendar
