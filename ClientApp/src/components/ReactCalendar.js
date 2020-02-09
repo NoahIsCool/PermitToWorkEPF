@@ -1,10 +1,11 @@
 import React from 'react'
-import { Calendar, Views } from 'react-calendar/src'
+import { Views } from 'react-calendar/src'
+import { Calendar } from 'react-calendar'
 import { events, ExampleControlSlot } from 'react-calendar/examples'
 
 const propTypes = {}
 
-class ReactCalendar extends React.Component {
+export class ReactCalendar extends React.Component {
   constructor(...args) {
     super(...args)
 
