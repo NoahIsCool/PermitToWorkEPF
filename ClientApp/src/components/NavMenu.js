@@ -24,31 +24,13 @@ export class NavMenu extends Component {
 
   render () {
     return (
-      <header>
-        <Navbar className="topnav navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
-          <Container>
-            <NavbarBrand tag={Link} to="/">
-		    <img src="logo.png" alt="" width="30" height="30"/> 
-	    </NavbarBrand>
-            <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-            <Collapse className="d-sm-inline-flex flex-sm-row-reverse" isOpen={!this.state.collapsed} navbar>
-              <ul className="navbar-nav flex-grow">
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/">Check In</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/Calendar">Calendar</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/Admin">Admin</NavLink>
-                </NavItem>
-                <LoginMenu>
-                </LoginMenu>
-              </ul>
-            </Collapse>
-          </Container>
-        </Navbar>
-      </header>
+    <div class="topnav">
+      <a href="/">Check IN</a>
+      <a href="/Calendar">Calendar</a>
+      <a href="/Admin">Admin</a>
+      <a href="/login">login</a>
+    </div>
+
     );
   }
 }
