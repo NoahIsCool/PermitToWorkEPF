@@ -16,7 +16,8 @@ public class RepfDbContext : DbContext
 	public DbSet<SignIn> SignIns {get;set;}
 	public DbSet<PermitToWorkRepf.Models.Student> Students {get;set;}
 
-	protected override void OnConfiguring(DbContextOptionsBuilder options)
-		            => options.UseSqlite("Data Source=app.db");
-}
-}
+	public RepfDbContext(DbContextOptions<RepfDbContext> options):base(options){}
+				protected override void OnConfiguring(DbContextOptionsBuilder options)
+				=> options.UseSqlite("Data Source=app.db");
+				}
+				}
