@@ -1,10 +1,14 @@
-﻿using System;
-namespace PermitToWorkEpf.Models{
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace PermitToWorkRepf.Models
+{
 public class Student
 {
-    public ulong ID;
-    public string name;
-    public string Team;
-    public DateTime Graduation;
+	[Key]
+	public ulong StudentId{get;set;}
+	public string Name{get;set;}
+	public string Team{get;set;}
+	public DateTime Graduation{get;set;}
 }
 }

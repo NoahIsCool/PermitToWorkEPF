@@ -1,8 +1,12 @@
-﻿using System;
-namespace PermitToWorkEpf.Models{
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace PermitToWorkRepf.Models
+{
 public class Machine
 {
-    public string name;
-    public string notes;
+	[Key]
+    public string name{get;set;}
+    public string notes{get;set;}
 }
 }
