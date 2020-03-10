@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
-using tmp.Data;
-using tmp.Models;
+using PermitToWorkRepf.Data;
+using PermitToWorkRepf.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace tmp
+namespace PermitToWorkRepf
 {
 public class Startup
 {

@@ -1,4 +1,4 @@
-﻿using tmp.Models;
+﻿using PermitToWorkRepf.Models;
 using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace tmp.Data
+namespace PermitToWorkRepf.Data
 {
 public class ApplicationDbContext : ApiAuthorizationDbContext<ApplicationUser>
 {
