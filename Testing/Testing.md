@@ -1,5 +1,7 @@
 # Testing Process
 
+Since our Project is a website most of the testing process is visual validation but the process for the different levels are as follows:
+
 ## Unit Test 
 
 Our unit test will verify the logging of equipment check-in and check-out. Upon submitting a check-in or check-out request, the test will check that a) the equipment is no longer available for check-out during the given time and b) the corresponding event on the calendar appears correctly with all the appropriate information. There will be a verification test for both the check-in/check-out tab and the calendar tab of our website, since the calendar allows drag-and-drop functionality to create reservations. 
