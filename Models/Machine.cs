@@ -6,7 +6,7 @@ namespace PermitToWorkRepf.Models
 public class Machine
 {
 	[Key]
-    public string name{get;set;}
-    public string notes{get;set;}
+    public string Name{get;set;}
+    public string Notes{get;set;}
 }
 }

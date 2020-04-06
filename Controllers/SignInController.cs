@@ -48,10 +48,6 @@ namespace tmp.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSignIn(int id, SignIn signIn)
         {
-            if (id != signIn.StudentId)
-            {
-                return BadRequest();
-            }
 
             _context.Entry(signIn).State = EntityState.Modified;
 
@@ -83,7 +79,7 @@ namespace tmp.Controllers
             _context.SignIns.Add(signIn);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSignIn", new { id = signIn.StudentId }, signIn);
+            return CreatedAtAction("GetSignIn", signIn);
         }
 
         // DELETE: api/SignIn/5
@@ -104,7 +100,7 @@ namespace tmp.Controllers
 
         private bool SignInExists(int id)
         {
-            return _context.SignIns.Any(e => e.StudentId == id);
+            return _context.SignIns.Any(e => e.Key == id);
         }
     }
 }

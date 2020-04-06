@@ -1,14 +1,17 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PermitToWorkRepf.Models
 {
 public class SignIn
 {
 	[Key]
-	public int StudentId{get;set;}
-	public List<Student> Students{get;set;}
-	public DateTime time{get;set;}
+	[DatabaseGenerat‌ed(DatabaseGeneratedOp‌​tion.Identity)]
+ 	public int Key { get; set; }
+	public Student Student{get;set;}
+	public Machine Machine{get;set;}
+	public DateTime StartTime{get;set;}
+	public DateTime EndTime{get;set;}
 }
 }

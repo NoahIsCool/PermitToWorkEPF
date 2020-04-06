@@ -48,7 +48,7 @@ namespace tmp.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMachine(string id, Machine machine)
         {
-            if (id != machine.name)
+            if (id != machine.Name)
             {
                 return BadRequest();
             }
@@ -87,7 +87,7 @@ namespace tmp.Controllers
             }
             catch (DbUpdateException)
             {
-                if (MachineExists(machine.name))
+                if (MachineExists(machine.Name))
                 {
                     return Conflict();
                 }
@@ -97,7 +97,7 @@ namespace tmp.Controllers
                 }
             }
 
-            return CreatedAtAction("GetMachine", new { id = machine.name }, machine);
+            return CreatedAtAction("GetMachine", new { id = machine.Name }, machine);
         }
 
         // DELETE: api/Machines/5
@@ -118,7 +118,7 @@ namespace tmp.Controllers
 
         private bool MachineExists(string id)
         {
-            return _context.Machines.Any(e => e.name == id);
+            return _context.Machines.Any(e => e.Name == id);
         }
     }
 }
