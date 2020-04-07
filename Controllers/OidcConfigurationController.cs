@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace tmp.Controllers
+namespace PermitToWorkRepf.Controllers
 {
 public class OidcConfigurationController : Controller
 {
