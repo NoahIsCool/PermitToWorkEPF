@@ -20,17 +20,41 @@ export class ReactCalendar extends Component {
         ]
     };
 
-    onEventResize = (type, { event, start, end, allDay }) => {
-        this.setState(state => {
-            state.events[0].start = start;
-            state.events[0].end = end;
-            return { events: state.events };
-        });
-    };
+    onEventResize = ({ event, start, end }) => {
+        const { events } = this.state
 
-    onEventDrop = ({ event, start, end, allDay }) => {
-        console.log(start);
-    };
+        const nextEvents = events.map(existingEvent => {
+            return existingEvent.id == event.id
+                ? { ...existingEvent, start, end }
+                : existingEvent
+        })
+
+        this.setState({
+            events: nextEvents,
+        })
+    }
+
+    onEventDrop = ({ event, start, end, isAllDay: droppedOnAllDaySlot }) => {
+        const { events } = this.state
+
+        const idx = events.indexOf(event)
+        let allDay = event.allDay
+
+        if (!event.allDay && droppedOnAllDaySlot) {
+            allDay = true
+        } else if (event.allDay && !droppedOnAllDaySlot) {
+            allDay = false
+        }
+
+        const updatedEvent = { ...event, start, end, allDay }
+
+        const nextEvents = [...events]
+        nextEvents.splice(idx, 1, updatedEvent)
+
+        this.setState({
+            events: nextEvents,
+        })
+    }
 
     render () {
         return (
