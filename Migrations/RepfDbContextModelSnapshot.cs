@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PermitToWorkRepf.Data;
 
-namespace tmp.Migrations
+namespace PermitToWorkEpf.Migrations
 {
     [DbContext(typeof(RepfDbContext))]
     partial class RepfDbContextModelSnapshot : ModelSnapshot

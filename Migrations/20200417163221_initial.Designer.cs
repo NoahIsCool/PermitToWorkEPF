@@ -9,8 +9,8 @@ using PermitToWorkRepf.Data;
 namespace PermitToWorkEpf.Migrations
 {
     [DbContext(typeof(RepfDbContext))]
-    [Migration("20200326194333_REPF")]
-    partial class REPF
+    [Migration("20200417163221_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,32 +20,40 @@ namespace PermitToWorkEpf.Migrations
 
             modelBuilder.Entity("PermitToWorkRepf.Models.Machine", b =>
                 {
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("notes")
+                    b.Property<string>("Notes")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("name");
+                    b.HasKey("Name");
 
                     b.ToTable("Machines");
                 });
 
             modelBuilder.Entity("PermitToWorkRepf.Models.SignIn", b =>
                 {
-                    b.Property<int>("StudentId")
+                    b.Property<int>("Key")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<ulong?>("StudentId1")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("time")
+                    b.Property<DateTime>("EndTime")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("StudentId");
+                    b.Property<string>("MachineName")
+                        .HasColumnType("TEXT");
 
-                    b.HasIndex("StudentId1");
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<ulong?>("StudentId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Key");
+
+                    b.HasIndex("MachineName");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("SignIns");
                 });
@@ -72,9 +80,13 @@ namespace PermitToWorkEpf.Migrations
 
             modelBuilder.Entity("PermitToWorkRepf.Models.SignIn", b =>
                 {
+                    b.HasOne("PermitToWorkRepf.Models.Machine", "Machine")
+                        .WithMany()
+                        .HasForeignKey("MachineName");
+
                     b.HasOne("PermitToWorkRepf.Models.Student", "Student")
-                        .WithMany("SignIns")
-                        .HasForeignKey("StudentId1");
+                        .WithMany()
+                        .HasForeignKey("StudentId");
                 });
 #pragma warning restore 612, 618
         }

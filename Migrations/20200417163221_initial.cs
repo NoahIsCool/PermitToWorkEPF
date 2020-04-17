@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PermitToWorkEpf.Migrations
 {
-    public partial class REPF : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,12 +11,12 @@ namespace PermitToWorkEpf.Migrations
                 name: "Machines",
                 columns: table => new
                 {
-                    name = table.Column<string>(nullable: false),
-                    notes = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: false),
+                    Notes = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Machines", x => x.name);
+                    table.PrimaryKey("PK_Machines", x => x.Name);
                 });
 
             migrationBuilder.CreateTable(
@@ -38,35 +38,48 @@ namespace PermitToWorkEpf.Migrations
                 name: "SignIns",
                 columns: table => new
                 {
-                    StudentId = table.Column<int>(nullable: false)
+                    Key = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    StudentId1 = table.Column<ulong>(nullable: true),
-                    time = table.Column<DateTime>(nullable: false)
+                    StudentId = table.Column<ulong>(nullable: true),
+                    MachineName = table.Column<string>(nullable: true),
+                    StartTime = table.Column<DateTime>(nullable: false),
+                    EndTime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SignIns", x => x.StudentId);
+                    table.PrimaryKey("PK_SignIns", x => x.Key);
                     table.ForeignKey(
-                        name: "FK_SignIns_Students_StudentId1",
-                        column: x => x.StudentId1,
+                        name: "FK_SignIns_Machines_MachineName",
+                        column: x => x.MachineName,
+                        principalTable: "Machines",
+                        principalColumn: "Name",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_SignIns_Students_StudentId",
+                        column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "StudentId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_SignIns_StudentId1",
+                name: "IX_SignIns_MachineName",
                 table: "SignIns",
-                column: "StudentId1");
+                column: "MachineName");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SignIns_StudentId",
+                table: "SignIns",
+                column: "StudentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Machines");
+                name: "SignIns");
 
             migrationBuilder.DropTable(
-                name: "SignIns");
+                name: "Machines");
 
             migrationBuilder.DropTable(
                 name: "Students");
