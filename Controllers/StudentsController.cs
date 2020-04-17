@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using PermitToWorkRepf.Data;
 using PermitToWorkRepf.Models;
 
-namespace tmp.Controllers
+namespace PermitToWorkRepf.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
