@@ -23,16 +23,18 @@ namespace PermitToWorkRepf.Controllers
 
         // GET: api/SignIn
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SignIn>>> GetSignIns()
+        public IEnumerable<SignIn> GetSignIns()
         {
-            return await _context.SignIns.ToListAsync();
+            return _context.SignIns.Include(s=>s.Student).Include(s=>s.Machine).ToList();
+						
         }
 
         // GET: api/SignIn/5
         [HttpGet("{id}")]
         public async Task<ActionResult<SignIn>> GetSignIn(int id)
         {
-            var signIn = await _context.SignIns.FindAsync(id);
+            var signIns = _context.SignIns.Include(s=>s.Student).Include(s=>s.Machine);
+            var signIn = await signIns.FirstOrDefaultAsync(s=>s.Key==id);
 
             if (signIn == null)
             {
