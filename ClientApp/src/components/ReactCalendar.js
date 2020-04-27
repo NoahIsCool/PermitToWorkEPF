@@ -12,13 +12,11 @@ export class ReactCalendar extends React.Component {
         super(props)
         this.state = {
             events: [
-                {
-                    start: new Date(),
-                    end: new Date(moment().add(1, 'days')),
-                    title: 'Some title'
-                }
+                {}
             ]
         }
+        this.configEventTextFromHTTPGET = this.configEventTextFromHTTPGET.bind(this);
+        this.httpGetAsync('/api/SignIn', this.configEventTextFromHTTPGET);
     }
 
     httpGetAsync(url, callback)
@@ -34,11 +32,30 @@ export class ReactCalendar extends React.Component {
 
     configEventTextFromHTTPGET(text)
     {
-        window.alert(text);
+        var eventsFromDb = JSON.parse(text);
+
+        // Loop through events and build events for calendar
+        var eventsForCalendar = [];
+        eventsFromDb.forEach(buildCalendarEvent);
+
+        function buildCalendarEvent(event)
+        {
+            var calendarEvent =
+                {
+                    start: new Date(event.startTime),
+                    end: new Date(event.endTime),
+                    title: event.machine.name,
+                    desc: event.student.team
+                };
+            eventsForCalendar.push(calendarEvent);
+        }
+
+        this.setState({
+            events: eventsForCalendar,
+        })
     }
 
     render () {
-        this.httpGetAsync('/api/SignIn', this.configEventTextFromHTTPGET);
         return (
             <div>
                 <Calendar
@@ -46,7 +63,7 @@ export class ReactCalendar extends React.Component {
                     defaultView='week'
                     events={this.state.events}
                     localizer={localizer}
-                    onSelectEvent={event => alert(event.title)}
+                    onSelectEvent={event => alert(event.desc)}
                     style={{ height: '100vh' }}
                 />
             </div>
