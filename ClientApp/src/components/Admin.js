@@ -1,6 +1,24 @@
 import React, {Component} from 'react';
+import  {Button, Form, Label, Input, Modal, ModalBody} from 'react-bootstrap';
+import SimpleReactFileUpload from './react-file-upload.js';
+import './Admin.css'
 
 export class Admin extends Component {
+	constructor(props){
+		super(props);
+		this.state={
+			showImportUser:false,
+			showImportCalendar:false
+		}
+		this.setShowImportUser=this.setShowImportUser.bind(this);
+		this.setShowImportCalendar=this.setShowImportCalendar.bind(this);
+		this.unsetShowImportUser=this.unsetShowImportUser.bind(this);
+		this.unsetShowImportCalendar=this.unsetShowImportCalendar.bind(this);
+			}
+	setShowImportUser(){this.setState({showImportUser:true})};
+	setShowImportCalendar(){this.setState({showImportCalendar:true})};
+	unsetShowImportUser(){this.setState({showImportUser:false})};
+	unsetShowImportCalendar(){this.setState({showImportCalendar:false})};
 	render () {
 		return (
 		<div className="Admin">
@@ -8,13 +26,29 @@ export class Admin extends Component {
 				<div class="row">
 					<div class="column">
 						<h2>Admin</h2>
-						<input type="button" value="Import Users" />
-						<input type="button" value="Export Users" />
-						<input type="button" value="Import Calendar" />
-						<input type="button" value="Export Calendar" />
-					</div>
+						<Button variant="danger" onClick={this.setShowImportUser}>Import Users</Button>
+						<Button variant="danger" onClick={this.setShowImportCalendar}>Import Calendar</Button>
+						<Button variant="danger" href="/api/file/Users">Export Users</Button>
+						<Button variant="danger" href="/api/file/Calendar">Export Calendar</Button>
+											</div>
 				</div>
-
+<Modal show={this.state.showImportUser} onHide={this.unsetShowImportUser}>
+	<Modal.Header closeButton>
+		<Modal.Title>Import User</Modal.Title>
+	</Modal.Header>
+	<Modal.Body>
+		<SimpleReactFileUpload url={'api/file/users'} />
+	</Modal.Body>
+</Modal>
+<Modal show={this.state.showImportCalendar} onHide={this.unsetShowImportCalendar}>
+	<Modal.Header closeButton>
+		<Modal.Title>Import Calendar</Modal.Title>
+	</Modal.Header>
+	<Modal.Body>
+		
+	<SimpleReactFileUpload url={'api/file/calendar/'} />
+	</Modal.Body>
+</Modal>
 				<div class="row">
 					<h2>Users</h2>
 					<div>
