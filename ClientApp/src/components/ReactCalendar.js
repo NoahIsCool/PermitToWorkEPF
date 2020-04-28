@@ -18,8 +18,8 @@ export class ReactCalendar extends React.Component {
             isModOpen: false,
             machine: 'Lathe 1',
             studentId: '',
-            startTime: null,
-            endTime: null,
+            startTime: '',
+            endTime: '',
             idNums: []
         }
 
@@ -122,11 +122,21 @@ export class ReactCalendar extends React.Component {
         //       })
 
         const isOpen = this.state.isModOpen;
+        //window.alert(new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(start));
+        //console.log(new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(today));
+
+        const startTime = start.getFullYear() + "-04"
+            + "-" + start.getDate() + "T" + start.getHours() + ":0"
+            + start.getMinutes() + ":0" + start.getSeconds();
+        const endTime = end.getFullYear() + "-04"
+            + "-" + end.getDate() + "T" + end.getHours() + ":0"
+            + end.getMinutes() + ":0" + end.getSeconds();
+        //     "2020-04-30T19:00:00"
         this.setState(
             {
                 isModOpen: !isOpen,
-                startTime: start,
-                endTime: end
+                startTime: startTime,
+                endTime: endTime
             });
     }
 
@@ -142,78 +152,59 @@ export class ReactCalendar extends React.Component {
     addReservation = event => {
         // Validate ID number
 
+        // FORGET VALIDATION FOR NOW
         // Empty?
-        if (this.state.studentId == '')
-        {
-            window.alert("Student ID must be provided!");
-            return;
-        }
+        // if (this.state.studentId == '')
+        // {
+        //     window.alert("Student ID must be provided!");
+        //     return;
+        // }
+        //
+        // // Allowed to access machines?
+        // var valid = false;
+        // this.httpGetAsync('/api/TodoItems', this.getStudentIdsFromHTTPGET);
+        // window.alert(this.state.idNums);
+        // validIds.forEach(checkIdNumber);
+        // function checkIdNumber(validId)
+        // {
+        //     if (this.state.studentId == validId)
+        //         valid = true;
+        // }
+        // // Not storing student IDs on front end
+        // validIds = null;
+        //
+        // // Don't add reservation if non-valid id given
+        // if (!valid)
+        // {
+        //     // Not storing student IDs on front end
+        //     this.setState({studentId: ''});
+        //     window.alert("Unauthorized/Invalid student ID");
+        //     return;
+        // }
 
-        // Allowed to access machines?
-        var valid = false;
-        this.httpGetAsync('/api/TodoItems', this.getStudentIdsFromHTTPGET);
-        window.alert(this.state.idNums);
-        validIds.forEach(checkIdNumber);
-        function checkIdNumber(validId)
-        {
-            if (this.state.studentId == validId)
-                valid = true;
-        }
-        // Not storing student IDs on front end
-        validIds = null;
-
-        // Don't add reservation if non-valid id given
-        if (!valid)
-        {
-            // Not storing student IDs on front end
-            this.setState({studentId: ''});
-            window.alert("Unauthorized/Invalid student ID");
-            return;
-        }
-
-        // Add reservation to calendar
-        const teamName = this.httpGetAsync('api/TodoItems',
-            this.getTeamNameFromIdHTTPGET(this.state.studentId));
-        const calendarEvent =
-            {
-                start: this.state.startTime,
-                end: this.state.endTime,
-                title: this.state.machine,
-                desc: teamName
-            };
-        this.setState(
-            {
-                events: [
-                    ...this.state.events,
-                    calendarEvent
-                ],
-                studentId: ''
-            })
+        // Add signIn to DB
+        const signIn =
+            `{
+                "StudentId": ` + this.state.studentId + `,
+                "MachineName": "` + this.state.machine + `",
+                "StartTime": "` + this.state.startTime + `",
+                "EndTime": "` + this.state.endTime + `"
+            }`;
+        this.httpPostAsync('/api/SignIn', signIn);
     }
 
     testAdd = event =>
     {
         var signIn =
-            {
-                StudentId: 111111111,
-                MachineName: "Mill 1",
-                Student:
-                    {
-                        StudentId: 111111111,
-                        Name: "Bob Man",
-                        Team: "Dragons",
-                        Graduation: "2020-05-01 00:00:00 AM",
-                    },
-                Machine:
-                    {
-                        Name: "Mill 1",
-                        Notes: "This is a mill",
-                    },
-                StartTime: "2020-04-30 07:00:00 PM",
-                EndTime: "2020-04-30 09:00:00 PM",
-            };
+            `{
+                "StudentId": 111111111,
+                "MachineName": "Mill 1",
+                "StartTime": "2020-04-30T19:00:00",
+                "EndTime": "2020-04-30T21:00:00"
+            }`;
 
         //const signInText = JSON.stringify(signIn);
+        window.alert("Huh?");
         this.httpPostAsync('/api/SignIn', signIn);
     }
 
@@ -248,7 +239,7 @@ export class ReactCalendar extends React.Component {
                     }}>
                     <h1 id="heading">Machine Reservation</h1>
                     <div id="fulldescription" tabIndex="0" role="document">
-                        <form onSubmit={this.testAdd}>
+                        <form onSubmit={this.addReservation}>
                             <select value={this.state.machine} onChange={this.handleEquipChange}>
                                 <option value="Lathe 1">Lathe 1</option>
                                 <option value="Lathe 2">Lathe 2</option>

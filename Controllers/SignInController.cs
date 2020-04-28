@@ -81,7 +81,6 @@ namespace PermitToWorkRepf.Controllers
             Student student = null;
             Machine machine = null;
             SignIn signIn = new SignIn();
-            Console.WriteLine("Hello? Anything?");
 
             //validate student id
             if(signInDTO.StudentId.HasValue){

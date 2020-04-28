@@ -23,7 +23,7 @@ export class CheckIn extends Component{
 										<input type="checkbox" name="lathe 2" /> Lathe 2<br />
 										<input type="checkbox" name="mill 1" /> Mill 1<br />
 										<input type="checkbox" name="mill 2" /> Mill 2<br />
-										<input type="checkbox" name="cnc plasma" disabled /> <s>CNC Plasma</s> (Checked Out: Tommy Mai 1/15/2020 2:00pm) <br />
+										<input type="checkbox" name="cnc plasma"  /> CNC Plasma<br />
 										<input type="checkbox" name="welder" /> Welders<br />
 									</div>
 									<input type="button" name="checkIn" value="Check In" />
