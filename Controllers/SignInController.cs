@@ -112,12 +112,12 @@ namespace PermitToWorkRepf.Controllers
             }
             
             //validate start and end times or use defaults if not provided
-            if(signInDTO.StartTime==null){
+            if(signInDTO.StartTime==null||signInDTO.StartTime==DateTime.MinValue){
                 signIn.StartTime=DateTime.Now;
             }else{
                 signIn.StartTime=signInDTO.StartTime;
             }
-            if(signInDTO.EndTime==null){
+            if(signInDTO.EndTime==null||signInDTO.EndTime==DateTime.MinValue){
                 signIn.EndTime=signIn.StartTime.AddHours(1);
             }else if(!signInDTO.EndTime.Date.Equals(signIn.StartTime.Date)){
                 return BadRequest();
