@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PermitToWorkRepf.Data;
 using PermitToWorkRepf.Models;
+using Newtonsoft.Json;
 
 namespace PermitToWorkRepf.Controllers
 {
@@ -50,7 +51,7 @@ namespace PermitToWorkRepf.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSignIn(int id, SignIn signIn)
         {
-            
+            Console.WriteLine("Anything");
             _context.Entry(signIn).State = EntityState.Modified;
 
             try
@@ -80,6 +81,7 @@ namespace PermitToWorkRepf.Controllers
             Student student = null;
             Machine machine = null;
             SignIn signIn = new SignIn();
+            Console.WriteLine("Hello? Anything?");
 
             //validate student id
             if(signInDTO.StudentId.HasValue){
