@@ -7,27 +7,17 @@ export class Admin extends Component {
 		super(props);
 		this.state={
 			showImportUser:false,
-			showExportUser:false,
-			showImportCalendar:false,
-			showExportCalendar:false
+			showImportCalendar:false
 		}
 		this.setShowImportUser=this.setShowImportUser.bind(this);
-		this.setShowExportUser=this.setShowExportUser.bind(this);
 		this.setShowImportCalendar=this.setShowImportCalendar.bind(this);
-		this.setShowExportCalendar=this.setShowExportCalendar.bind(this);
 		this.unsetShowImportUser=this.unsetShowImportUser.bind(this);
-		this.unsetShowExportUser=this.unsetShowExportUser.bind(this);
 		this.unsetShowImportCalendar=this.unsetShowImportCalendar.bind(this);
-		this.unsetShowExportCalendar=this.unsetShowExportCalendar.bind(this);
-	}
+			}
 	setShowImportUser(){this.setState({showImportUser:true})};
-	setShowExportUser(){this.setState({showExportUser:true})};
 	setShowImportCalendar(){this.setState({showImportCalendar:true})};
-	setShowExportCalendar(){this.setState({showExportCalendar:true})};
 	unsetShowImportUser(){this.setState({showImportUser:false})};
-	unsetShowExportUser(){this.setState({showExportUser:false})};
 	unsetShowImportCalendar(){this.setState({showImportCalendar:false})};
-	unsetShowExportCalendar(){this.setState({showExportCalendar:false})};
 	render () {
 		return (
 		<div className="Admin">
@@ -35,11 +25,11 @@ export class Admin extends Component {
 				<div class="row">
 					<div class="column">
 						<h2>Admin</h2>
-						<button variant="primary" onClick={this.setShowImportUser}>Import Users</button>
-						<button variant="primary" onClick={this.setShowExportUser}>Export Users</button>
-						<button variant="primary" onClick={this.setShowImportCalendar}>Import Calendar</button>
-						<button variant="primary" onClick={this.setShowExportCalendar}>Export Calendar</button>
-					</div>
+						<Button variant="primary" onClick={this.setShowImportUser}>Import Users</Button>
+						<Button variant="primary" href="/api/file/Users">Export Users</Button>
+						<Button variant="primary" href="/api/file/Calendar">Export Calendar</Button>
+						<Button variant="primary" onClick={this.setShowImportCalendar}>Import Calendar</Button>
+											</div>
 				</div>
 <Modal show={this.state.showImportUser} onHide={this.unsetShowImportUser}>
 	<Modal.Header closeButton>
@@ -49,27 +39,9 @@ export class Admin extends Component {
 		<SimpleReactFileUpload url={'api/file/users'} />
 	</Modal.Body>
 </Modal>
-<Modal show={this.state.showExportUser} onHide={this.unsetShowExportUser}>
-	<Modal.Header closeButton>
-		<Modal.Title>Export User</Modal.Title>
-	</Modal.Header>
-	<Modal.Body>
-		
-	<SimpleReactFileUpload url={'api/file/users/'} />
-	</Modal.Body>
-</Modal>
 <Modal show={this.state.showImportCalendar} onHide={this.unsetShowImportCalendar}>
 	<Modal.Header closeButton>
 		<Modal.Title>Import Calendar</Modal.Title>
-	</Modal.Header>
-	<Modal.Body>
-		
-	<SimpleReactFileUpload url={'api/file/calendar/'} />
-	</Modal.Body>
-</Modal>
-<Modal show={this.state.showExportCalendar} onHide={this.unsetShowExportCalendar}>
-	<Modal.Header closeButton>
-		<Modal.Title>Export Calendar</Modal.Title>
 	</Modal.Header>
 	<Modal.Body>
 		
