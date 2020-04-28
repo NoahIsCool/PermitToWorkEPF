@@ -25,7 +25,7 @@ export class NavMenu extends Component {
   render () {
     return (
     <div class="topnav">
-      <a href="/">Check IN</a>
+      <a href="/">Checkin</a>
       <a href="/Calendar">Calendar</a>
       <a href="/Admin">Admin</a>
       <a href="/login">login</a>
