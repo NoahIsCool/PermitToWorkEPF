@@ -11,7 +11,14 @@ export class Admin extends Component {
 			showImportCalendar:false,
 			showExportCalendar:false
 		}
-
+		this.setShowImportUser=this.setShowImportUser.bind(this);
+		this.setShowExportUser=this.setShowExportUser.bind(this);
+		this.setShowImportCalendar=this.setShowImportCalendar.bind(this);
+		this.setShowExportCalendar=this.setShowExportCalendar.bind(this);
+		this.unsetShowImportUser=this.unsetShowImportUser.bind(this);
+		this.unsetShowExportUser=this.unsetShowExportUser.bind(this);
+		this.unsetShowImportCalendar=this.unsetShowImportCalendar.bind(this);
+		this.unsetShowExportCalendar=this.unsetShowExportCalendar.bind(this);
 	}
 	setShowImportUser(){this.setState({showImportUser:true})};
 	setShowExportUser(){this.setState({showExportUser:true})};
