@@ -46,7 +46,7 @@ export class Admin extends Component {
 		<Modal.Title>Import User</Modal.Title>
 	</Modal.Header>
 	<Modal.Body>
-		<SimpleReactFileUpload />
+		<SimpleReactFileUpload url={'api/file/users'} />
 	</Modal.Body>
 </Modal>
 <Modal show={this.state.showExportUser} onHide={this.unsetShowExportUser}>
@@ -55,7 +55,7 @@ export class Admin extends Component {
 	</Modal.Header>
 	<Modal.Body>
 		
-	<SimpleReactFileUpload />
+	<SimpleReactFileUpload url={'api/file/users/'} />
 	</Modal.Body>
 </Modal>
 <Modal show={this.state.showImportCalendar} onHide={this.unsetShowImportCalendar}>
@@ -64,7 +64,7 @@ export class Admin extends Component {
 	</Modal.Header>
 	<Modal.Body>
 		
-	<SimpleReactFileUpload />
+	<SimpleReactFileUpload url={'api/file/calendar/'} />
 	</Modal.Body>
 </Modal>
 <Modal show={this.state.showExportCalendar} onHide={this.unsetShowExportCalendar}>
@@ -73,7 +73,7 @@ export class Admin extends Component {
 	</Modal.Header>
 	<Modal.Body>
 		
-	<SimpleReactFileUpload />
+	<SimpleReactFileUpload url={'api/file/calendar/'} />
 	</Modal.Body>
 </Modal>
 				<div class="row">

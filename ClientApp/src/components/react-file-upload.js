@@ -23,7 +23,6 @@ class SimpleReactFileUpload extends React.Component {
     this.setState({file:e.target.files[0]})
   }
   fileUpload(file){
-    const url = 'http://example.com/file-upload';
     const formData = new FormData();
     formData.append('file',file)
     const config = {
@@ -31,7 +30,10 @@ class SimpleReactFileUpload extends React.Component {
             'content-type': 'multipart/form-data'
         }
     }
-    return  post(url, formData,config)
+    console.log(this.props.url);
+    console.log(formData)
+    console.log(config)
+    return  post(this.props.url, formData,config)
   }
 
   render() {
