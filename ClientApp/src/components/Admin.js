@@ -1,6 +1,26 @@
 import React, {Component} from 'react';
+import  {Button, Form, Label, Input, Modal, ModalBody} from 'react-bootstrap';
+import SimpleReactFileUpload from './react-file-upload.js';
 
 export class Admin extends Component {
+	constructor(props){
+		super(props);
+		this.state={
+			showImportUser:false,
+			showExportUser:false,
+			showImportCalendar:false,
+			showExportCalendar:false
+		}
+
+	}
+	setShowImportUser(){this.setState({showImportUser:true})};
+	setShowExportUser(){this.setState({showExportUser:true})};
+	setShowImportCalendar(){this.setState({showImportCalendar:true})};
+	setShowExportCalendar(){this.setState({showExportCalendar:true})};
+	unsetShowImportUser(){this.setState({showImportUser:false})};
+	unsetShowExportUser(){this.setState({showExportUser:false})};
+	unsetShowImportCalendar(){this.setState({showImportCalendar:false})};
+	unsetShowExportCalendar(){this.setState({showExportCalendar:false})};
 	render () {
 		return (
 		<div className="Admin">
@@ -8,13 +28,47 @@ export class Admin extends Component {
 				<div class="row">
 					<div class="column">
 						<h2>Admin</h2>
-						<input type="button" value="Import Users" />
-						<input type="button" value="Export Users" />
-						<input type="button" value="Import Calendar" />
-						<input type="button" value="Export Calendar" />
+						<button variant="primary" onClick={this.setShowImportUser}>Import Users</button>
+						<button variant="primary" onClick={this.setShowExportUser}>Export Users</button>
+						<button variant="primary" onClick={this.setShowImportCalendar}>Import Calendar</button>
+						<button variant="primary" onClick={this.setShowExportCalendar}>Export Calendar</button>
 					</div>
 				</div>
-
+<Modal show={this.state.showImportUser} onHide={this.unsetShowImportUser}>
+	<Modal.Header closeButton>
+		<Modal.Title>Import User</Modal.Title>
+	</Modal.Header>
+	<Modal.Body>
+		<SimpleReactFileUpload />
+	</Modal.Body>
+</Modal>
+<Modal show={this.state.showExportUser} onHide={this.unsetShowExportUser}>
+	<Modal.Header closeButton>
+		<Modal.Title>Export User</Modal.Title>
+	</Modal.Header>
+	<Modal.Body>
+		
+	<SimpleReactFileUpload />
+	</Modal.Body>
+</Modal>
+<Modal show={this.state.showImportCalendar} onHide={this.unsetShowImportCalendar}>
+	<Modal.Header closeButton>
+		<Modal.Title>Import Calendar</Modal.Title>
+	</Modal.Header>
+	<Modal.Body>
+		
+	<SimpleReactFileUpload />
+	</Modal.Body>
+</Modal>
+<Modal show={this.state.showExportCalendar} onHide={this.unsetShowExportCalendar}>
+	<Modal.Header closeButton>
+		<Modal.Title>Export Calendar</Modal.Title>
+	</Modal.Header>
+	<Modal.Body>
+		
+	<SimpleReactFileUpload />
+	</Modal.Body>
+</Modal>
 				<div class="row">
 					<h2>Users</h2>
 					<div>
