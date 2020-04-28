@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import  {Button, Form, Label, Input, Modal, ModalBody} from 'react-bootstrap';
 import SimpleReactFileUpload from './react-file-upload.js';
+import './Admin.css'
 
 export class Admin extends Component {
 	constructor(props){
@@ -25,10 +26,10 @@ export class Admin extends Component {
 				<div class="row">
 					<div class="column">
 						<h2>Admin</h2>
-						<Button variant="primary" onClick={this.setShowImportUser}>Import Users</Button>
-						<Button variant="primary" href="/api/file/Users">Export Users</Button>
-						<Button variant="primary" href="/api/file/Calendar">Export Calendar</Button>
-						<Button variant="primary" onClick={this.setShowImportCalendar}>Import Calendar</Button>
+						<Button variant="danger" onClick={this.setShowImportUser}>Import Users</Button>
+						<Button variant="danger" onClick={this.setShowImportCalendar}>Import Calendar</Button>
+						<Button variant="danger" href="/api/file/Users">Export Users</Button>
+						<Button variant="danger" href="/api/file/Calendar">Export Calendar</Button>
 											</div>
 				</div>
 <Modal show={this.state.showImportUser} onHide={this.unsetShowImportUser}>
