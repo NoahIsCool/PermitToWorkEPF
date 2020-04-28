@@ -195,22 +195,22 @@ export class ReactCalendar extends React.Component {
     {
         var signIn =
             {
-                "StudentId": 111111111,
-                "MachineName": "Mill 1",
-                "Student":
+                StudentId: 111111111,
+                MachineName: "Mill 1",
+                Student:
                     {
-                        "StudentId": 111111111,
-                        "Name": "Bob Man",
-                        "Team": "Dragons",
-                        "Graduation": "2020-05-01 00:00:00 AM",
+                        StudentId: 111111111,
+                        Name: "Bob Man",
+                        Team: "Dragons",
+                        Graduation: "2020-05-01 00:00:00 AM",
                     },
-                "Machine":
+                Machine:
                     {
-                        "Name": "Mill 1",
-                        "Notes": "This is a mill",
+                        Name: "Mill 1",
+                        Notes: "This is a mill",
                     },
-                "StartTime": "2020-04-30 07:00:00 PM",
-                "EndTime": "2020-04-30 09:00:00 PM",
+                StartTime: "2020-04-30 07:00:00 PM",
+                EndTime: "2020-04-30 09:00:00 PM",
             };
 
         //const signInText = JSON.stringify(signIn);
