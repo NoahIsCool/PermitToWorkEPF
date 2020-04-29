@@ -8,13 +8,62 @@ export class Admin extends Component {
 		super(props);
 		this.state={
 			showImportUser:false,
-			showImportCalendar:false
+			showImportCalendar:false,
+			showAddUser:false,
+			showRemoveUser:false,
+			studentId:false,
+			studentName:false,
+			teamName:false,
+			graduationDate:false
 		}
+		this.handleStudentIdChange=this.handleStudentIdChange.bind(this);
+		this.handleStudentNameChange=this.handleStudentNameChange.bind(this);
+		this.handleTeamNameChange=this.handleTeamNameChange.bind(this);
+		this.handleGraduationDateChange=this.handleGraduationDateChange.bind(this);
+		this.setShowAddUser=this.setShowAddUser.bind(this);
+		this.setShowRemoveUser=this.setShowRemoveUser.bind(this);
+		this.unsetShowAddUser=this.unsetShowAddUser.bind(this);
+		this.unsetShowRemoveUser=this.unsetShowRemoveUser.bind(this);
 		this.setShowImportUser=this.setShowImportUser.bind(this);
 		this.setShowImportCalendar=this.setShowImportCalendar.bind(this);
 		this.unsetShowImportUser=this.unsetShowImportUser.bind(this);
 		this.unsetShowImportCalendar=this.unsetShowImportCalendar.bind(this);
-			}
+		this.handleCreateUser=this.handleCreateUser.bind(this);
+	}
+	httpGetAsync(url, callback)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("GET", url, true); // true for asynchronous
+        xmlHttp.send(null);
+    }
+	handleStudentIdChange(e){this.setState({studentId:e.target.value});}
+	handleStudentNameChange(e){this.setState({studentName:e.target.value});}
+	handleTeamNameChange(e){this.setState({teamName:e.target.value});}
+	handleGraduationDateChange(e){this.setState({graduationDate:e.target.value});}
+	handleCreateUser(){
+		this.httpPostAsync('/api/Students',{
+			StudentId:this.state.studentId,
+			Name:this.state.studentName,
+			Graduation:this.state.graduationDate,
+			Team:this.state.teamName
+		})
+	}
+    httpPostAsync(url, data)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("POST", url, true);
+        xmlHttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+        xmlHttp.send(data);
+    }
+	setShowAddUser(){this.setState({showAddUser:true})};
+	setShowRemoveUser(){this.setState({showRemoveUser:true})};
+	unsetShowAddUser(){this.setState({showAddUser:false})};
+	unsetShowRemoveUser(){this.setState({showRemoveUser:false})};
 	setShowImportUser(){this.setState({showImportUser:true})};
 	setShowImportCalendar(){this.setState({showImportCalendar:true})};
 	unsetShowImportUser(){this.setState({showImportUser:false})};
@@ -38,6 +87,20 @@ export class Admin extends Component {
 	</Modal.Header>
 	<Modal.Body>
 		<SimpleReactFileUpload url={'api/file/users'} />
+	</Modal.Body>
+</Modal>
+<Modal show={this.state.showAddUser} onHide={this.unsetShowAddUser}>
+	<Modal.Header closeButton>
+		<Modal.Title>Add User</Modal.Title>
+	</Modal.Header>
+	<Modal.Body>
+		<form>
+			<input type="text" name="StudentId" placeholder="Student Id" value={this.state.studentId} onChange={this.handleStudentIdChange} />
+			<input type="text" name="StudentName" placeholder="Student Name" value={this.state.studentName} onchange={this.handleStudentNameChange}/>
+			<input type="text" name="TeamName" placeholder="Team Name" value={this.state.teamName} onchange={this.handleTeamNameChange}/>
+			<input type="date" name="GraduationDate" value={this.state.graduationDate} onchange={this.handleGraduationDateChange}/>
+			<Button onClick={this.handleCreateUser}/>
+		</form>
 	</Modal.Body>
 </Modal>
 <Modal show={this.state.showImportCalendar} onHide={this.unsetShowImportCalendar}>
